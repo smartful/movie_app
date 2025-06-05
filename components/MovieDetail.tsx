@@ -30,7 +30,10 @@ const MovieDetail = async ({ idMovie }: { idMovie: string }) => {
         <h2 className="text-lg underline">Genres :</h2>
         <div className="flex flex-row gap-3">
           {movieDetails.genres.map((genre: { id: number; name: string }) => (
-            <div className="border rounded-2xl bg-blue-300 p-3 w-28">
+            <div
+              key={genre.id}
+              className="border rounded-2xl bg-blue-300 p-3 w-28"
+            >
               {genre.name}
             </div>
           ))}
