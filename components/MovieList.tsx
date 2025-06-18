@@ -16,17 +16,25 @@ const MovieList = async () => {
 
   return (
     <div className="mx-2 mb-4">
-      <h1 className="text-lg my-2">Top Films</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {movieList.results.map((movie: any) => (
-          <MovieCard
-            key={movie.id}
-            id={movie.id}
-            poster_path={movie.poster_path}
-            original_title={movie.original_title}
-          />
-        ))}
-      </div>
+      {movieList?.results ? (
+        <>
+          <h1 className="text-lg my-2">Top Films</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {movieList.results.map((movie: any) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                poster_path={movie.poster_path}
+                original_title={movie.original_title}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="p-4 bg-red-800 border rounded-2xl text-white">
+          Problème serveur : La connexion à l'API ne fonctionne pas !
+        </div>
+      )}
     </div>
   );
 };
